@@ -1,0 +1,61 @@
+//模块框样式
+
+@RADIUS_SIZE: 10px;
+@ORDER_SIZE: 3px;
+@HEADER_HEIGHT: 25px;
+@HEADER_TITLE_LEFT: 15px;
+
+.module-frame {
+    width: 100%;
+    background-color: @THEME_B_COLOR;
+    .border(@ORDER_SIZE,@THEME_B_COLOR);
+    .radius-top(@RADIUS_SIZE);
+    .frame-full();
+    .frame-shadow(@x:5px, @y:5px, @blur: 10px, @color:@THEME_SHADOW);
+    > .header{
+        height: @HEADER_HEIGHT;
+        width: 100%;
+        padding-left: @HEADER_TITLE_LEFT;
+        color: @THEME_B_WORD_COLOR;
+        line-height: @HEADER_HEIGHT;
+        .radius-top(@RADIUS_SIZE);
+        > .action-group{
+            float: right;
+            height: 100%;
+            .frame-horizontal();
+            > div{
+                height: 100%;
+                text-align: center;
+                width: @HEADER_HEIGHT;
+                color: @THEME_BACK_COLOR;
+                .cursor-click();
+            }
+            > div:hover{
+                .text-shadow(@x:2px, @y:2px, @blur: 2px, @color:@THEME_SHADOW);
+            }
+            > .act-close{
+                color: @COLOR_ALIZARIN;
+            }
+        }
+    }
+    > .data{
+        overflow-y: auto;
+        color: @THEME_WORD_COLOR;
+        background-color: @THEME_BACK_COLOR;
+        .frame-full(@top:@HEADER_HEIGHT);
+    }
+}
+.module-frame.max {
+    .border(0,@THEME_B_COLOR);
+    .radius-top(0);
+}
+.selected.module-frame {
+        background-color: @THEME_B_COLOR_D;
+        .border(@ORDER_SIZE, @THEME_B_COLOR_D);
+}
+.loading.module-frame {
+    > .data{
+        .loading-bg();
+        background-size: 50%;
+    }
+}

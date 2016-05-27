@@ -1,0 +1,38 @@
+// web工作区
+
+.workspace {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    > .full-item{
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+        font-size: 30px;
+        .cursor-click();
+        color: @THEME_B_COLOR_D;
+    }
+}
+
+.workspace:-moz-full-screen {
+    > .full-item{
+        display: none;
+    }
+}
+
+.workspace:-webkit-full-screen {
+    > .full-item{
+        display: none;
+    }
+}
+
+.workspace:fullscreen {
+    > .full-item{
+        display: none;
+    }
+}
+@import "work/stockList";
+@import "work/stockItem";
+

@@ -1,0 +1,144 @@
+//基本模块
+
+.border(@width:@ORDER_DEFAULT_SIZE,@color) {
+    border: @width solid @color;
+}
+.radius-top-left(@radius: @RADIUS_DEFAULT_SIZE) {
+    border-top-left-radius: @radius;
+    -webkit-border-top-left-radius: @radius;
+    -moz-border-top-left-radius: @radius;
+}
+.radius-top-right(@radius: @RADIUS_DEFAULT_SIZE) {
+    border-top-right-radius: @radius;
+    -webkit-border-top-right-radius: @radius;
+    -moz-border-top-right-radius: @radius;
+}
+.radius-bottom-left(@radius: @RADIUS_DEFAULT_SIZE) {
+    border-bottom-left-radius: @radius;
+    -webkit-border-bottom-left-radius: @radius;
+    -moz-border-bottom-left-radius: @radius;
+}
+.radius-bottom-right(@radius: @RADIUS_DEFAULT_SIZE) {
+    border-bottom-right-radius: @radius;
+    -webkit-border-bottom-right-radius: @radius;
+    -moz-border-bottom-right-radius: @radius;
+}
+.radius(@radius: @RADIUS_DEFAULT_SIZE) {
+    border-radius: @radius;
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+}
+//圆角操作
+.radius-top(@radius: @RADIUS_DEFAULT_SIZE) {
+    .radius-top-left(@radius);
+    .radius-top-right(@radius);
+}
+
+.radius-bottom(@radius: @RADIUS_DEFAULT_SIZE) {
+    .radius-bottom-left(@radius);
+    .radius-bottom-right(@radius);
+}
+
+.radius-left(@radius: @RADIUS_DEFAULT_SIZE) {
+    .radius-top-left(@radius);
+    .radius-bottom-left(@radius);
+}
+
+.radius-right(@radius: @RADIUS_DEFAULT_SIZE) {
+    .radius-top-right(@radius);
+    .radius-bottom-right(@radius);
+}
+.frame-full(@top:0, @left:0, @right:0, @bottom:0) {
+    position: absolute;
+    top: @top;
+    left: @left;
+    right: @right;
+    bottom: @bottom;
+}
+//设定元素水平居中
+.frame-center(@distance: 0) {
+    margin: @distance auto;
+}
+//设定水平模块
+.frame-horizontal(@direction: left) {
+    overflow: hidden;
+    >*{
+        float: @direction;
+    }
+}
+//设定定位布局
+.frame-absolute() {
+    position: relative;
+    > div {
+        position: absolute;
+    }
+}
+//不允许选中
+.no-select() {
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+//绝对定位居中
+.abs-horizontal-center() {
+    left: 50%;
+    transform: translateX(-50%);
+}
+.abs-vertical-center() {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.abs-center() {
+    .abs-horizontal-center();
+    .abs-vertical-center();
+}
+//设定阴影
+.frame-shadow(@x:0, @y:0, @blur:0, @spread:0, @color) {
+    box-shadow: @x @y @blur @spread @color;
+    -webkit-box-shadow: @x @y @blur @spread @color;
+    -moz-box-shadow: @x @y @blur @spread @color;
+}
+.frame-shadow-inset(@x:0, @y:0, @blur:0, @spread:0, @color) {
+    box-shadow: @x @y @blur @spread @color inset;
+    -webkit-box-shadow: @x @y @blur @spread @color inset;
+    -moz-box-shadow: @x @y @blur @spread @color inset;
+}
+.text-shadow(@x:0, @y:0, @blur:0, @color) {
+    text-shadow: @x @y @blur @color;
+    -webkit-text-shadow: @x @y @blur @color;
+    -moz-text-shadow: @x @y @blur @color;
+}
+//设定基础宽度
+.width-num(@num: 1) {
+    width: (100/@num)/100*100%;
+}
+//点击鼠标手势
+.cursor-click{
+    cursor: pointer;
+}
+//加载中背景
+.loading-bg{
+    background-image: url("../img/load-b-5.gif");
+    background-color: #FFFFFF;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.width-num-1{
+    .width-num(1)
+}
+.width-num-2{
+    .width-num(2)
+}
+.width-num-3{
+    .width-num(3)
+}
+.width-num-4{
+    .width-num(4)
+}
+.width-num-5{
+    .width-num(5)
+}
+.width-num-6{
+    .width-num(6)
+}
