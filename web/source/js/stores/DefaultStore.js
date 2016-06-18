@@ -34,42 +34,25 @@ var Store = {
         }
     },
 
-    save: function(data) {
-        this.before(Constants.storeHandle.SAVE, data);
+    handle: function(data) {
+        this.before(Constants.storeAction.HANDLE, data);
         var self = this;
-        this.handleSave(data).then(function(request){
-            self.after(Constants.storeHandle.SAVE, this.successRequest(request));
-        }).catch(function(request){
-            self.after(Constants.storeHandle.SAVE, this.errorRequest(request));
+        this.process(data).then(function(request){
+            self.after(Constants.storeAction.HANDLE, this.result(null, request));
+        }).catch(function(error){
+            self.after(Constants.storeAction.HANDLE, this.result(error, null));
         });
     },
 
-    delete: function(data) {
-        this.before(Constants.storeHandle.DELETE, data);
-        var self = this;
-        this.handleDel(data).then(function(request){
-            self.after(Constants.storeHandle.DELETE, this.successRequest(request));
-        }).catch(function(request){
-            self.after(Constants.storeHandle.DELETE, this.errorRequest(request));
-        });
-    },
-
-    get: function(data, key) {
-        this.before(Constants.storeHandle.GET, data, key);
-        var self = this;
-        this.handleGet(data).then(function(request){
-            self.after(Constants.storeHandle.GET, self.successRequest(request), key);
-        }).catch(function(request){
-            self.after(Constants.storeHandle.GET, self.errorRequest(request), key);
-        });
-    },
-
-    successRequest: function(request) {
+    result: function(error, request) {
+        if(error){
+            return {status: 1, result: error}
+        }
         return {status: 0, result: request}
     },
 
-    errorRequest: function(request) {
-        return {status: 1, result: request}
+    process: function(data){
+        return Promise;
     }
 };
 

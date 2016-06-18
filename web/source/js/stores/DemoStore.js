@@ -10,21 +10,14 @@ var DemoStore = assign({
 
     name: Constants.store.DEMO,
 
-    handleSave: function (data) {
-        return;
-    },
-
-    handleDel: function (data) {
-        return;
-    },
-
-    handleGet: function (data) {
+    process: function (data) {
         return new Promise(function(resolve, reject){
             return setTimeout(function(){
                 resolve(data);
             }, 1000);
         });
     }
+
 }, DefaultStore);
 
 module.exports = DemoStore;

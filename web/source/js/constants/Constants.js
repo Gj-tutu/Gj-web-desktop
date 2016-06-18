@@ -41,10 +41,8 @@ var Constants = {
         AFTER: ":after"
     },
 
-    storeHandle: {
-        SAVE: "Save",
-        DELETE: "Delete",
-        GET: "Get"
+    storeAction: {
+        HANDLE: "handle"
     },
 
     store: {
