@@ -20,4 +20,4 @@ var DemoStore = assign({
 
 }, DefaultStore);
 
-module.exports = DemoStore;
+module.exports = DemoStore.init();

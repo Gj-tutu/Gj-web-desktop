@@ -6,7 +6,6 @@ var Constants = require('../constants/Constants');
 var Actions = require('../actions/Actions');
 var StoreNotice = require('../notices/StoreNotice');
 var Promise = require("es6-promise");
-var app = require('../app');
 
 var Store = {
 

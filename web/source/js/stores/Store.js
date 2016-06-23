@@ -2,17 +2,14 @@
  * Created by tutu on 15-8-17.
  */
 
-function initStore(item, index) {
-    item.init();
-}
-var storeList = [
-    require('./DemoStore')
-];
+var storeList = ['DemoStore'];
 
 var Store = {
     init: function() {
-        storeList.map(initStore);
+        storeList.map((item, index)=>{
+            require(item)
+        });
     }
 };
 
-module.exports = Store;
+module.exports = Store.init();
