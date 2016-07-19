@@ -2,7 +2,7 @@
  * Created by tutu on 15-8-19.
  */
 
-var Demo = require("./work/Demo");
+var Works = require("./Works");
 var Component = require("../mixins/Component");
 var Element = require("../mixins/Element");
 var Default = require("../mixins/Default");
@@ -139,13 +139,7 @@ var Workspace = React.createClass({
 
     setHtml: function(item, index) {
         var selected = this.data.selectId == index ? true : false;
-        switch (item.type){
-            case Constants.workType.DEMO:
-                return <Demo gKey={this.getGKey()} size={item.size} key={item.workId}
-                                  selected={selected} workId={item.workId}/>;
-                break;
-        }
-        return;
+        return Works.render(item, this.getGKey(), selected);
     },
 
     getWorkspace: function() {
