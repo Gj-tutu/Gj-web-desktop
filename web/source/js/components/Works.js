@@ -5,14 +5,14 @@
 var Demo = require("./work/Demo");
 var Constants = require("../constants/Constants");
 
-var map = {};
-map[Constants.workType.DEMO] = Demo;
+var workMap = {};
+workMap[Constants.workType.DEMO] = Demo;
 
 var Works = {
-    render: function (type, gKey, selected){
-        if (map[type]){
-            return React.createElement(map[type],
-                {gKey: this.getGKey(), size: item.size, key: item.workId, selected: selected, workId: item.workId})
+    render: function (workItem, gKey, selected){
+        if (workMap[workItem.type]){
+            return React.createElement(workMap[workItem.type],
+                {gKey: gKey, size: workItem.size, key: workItem.workId, selected: selected, workId: workItem.workId})
         }else{
             return "";
         }

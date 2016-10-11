@@ -17,29 +17,29 @@ var Store = {
         StoreNotice.removeStore(this.name);
     },
 
-    before: function(handle, data, key) {
+    before: function(action, data, key) {
         if(key){
-            Actions.storeNoReply(key, this.name, handle, Constants.listen.BEFORE, data);
+            Actions.storeNoReply(key, this.name, action, Constants.listen.BEFORE, data);
         }else{
-            Actions.storeNotice(this.name, handle, Constants.listen.BEFORE, data);
+            Actions.storeNotice(this.name, action, Constants.listen.BEFORE, data);
         }
     },
 
-    after: function(handle, data, key) {
+    after: function(action, data, key) {
         if(key){
-            Actions.storeNoReply(key, this.name, handle, Constants.listen.AFTER, data);
+            Actions.storeNoReply(key, this.name, action, Constants.listen.AFTER, data);
         }else{
-            Actions.storeNotice(this.name, handle, Constants.listen.AFTER, data);
+            Actions.storeNotice(this.name, action, Constants.listen.AFTER, data);
         }
     },
 
-    handle: function(data) {
-        this.before(Constants.storeAction.HANDLE, data);
+    handle: function(action, data, key) {
+        this.before(action, data, key);
         var self = this;
-        this.process(data).then(function(request){
-            self.after(Constants.storeAction.HANDLE, this.result(null, request));
+        this.process(action, data).then(function(request){
+            self.after(action, self.result(null, request), key);
         }).catch(function(error){
-            self.after(Constants.storeAction.HANDLE, this.result(error, null));
+            self.after(action, self.result(error, null), key);
         });
     },
 
@@ -48,10 +48,6 @@ var Store = {
             return {status: 1, result: error}
         }
         return {status: 0, result: request}
-    },
-
-    process: function(data){
-        return Promise;
     }
 };
 

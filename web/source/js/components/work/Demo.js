@@ -64,6 +64,7 @@ var Demo = React.createClass({
         this.getData(Constants.store.DEMO, data, function(){
             self.loading();
         }, function(result){
+            console.log(1);
             self.loaded();
         });
     },

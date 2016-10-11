@@ -45,6 +45,12 @@ var Constants = {
         HANDLE: "handle"
     },
 
+    storeActionType: {
+        SAVE: "save",
+        GET: "get",
+        DELETE: "delete"
+    },
+
     store: {
         DEMO: "demo"
     },
@@ -56,4 +62,3 @@ var Constants = {
 };
 
 module.exports = Constants;
-

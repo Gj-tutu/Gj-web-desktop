@@ -22,8 +22,8 @@ var Component = function() {
         },
 
         getData: function(store, data, before, after) {
-            this.binds(store+Constants.storeHandle.GET, {BEFORE: before, AFTER: after}, true);
-            Actions.getData(this.componentKey, store, data);
+            this.binds(store+Constants.storeActionType.GET, {BEFORE: before, AFTER: after}, true);
+            Actions.storeHandle(store, Constants.storeActionType.GET, data, this.componentKey);
         },
 
         binds: function(action, callbacks, once) {

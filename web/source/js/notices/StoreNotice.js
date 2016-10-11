@@ -8,7 +8,7 @@ var assign = require('object-assign');
 var Constants = require('../constants/Constants');
 
 var StoreNotice = {
-    
+
     storeList: {},
 
     addStore: function(store) {
@@ -23,37 +23,17 @@ var StoreNotice = {
         return this.storeList[name];
     },
 
-    handleSave: function(name, data) {
+    handle: function(name, action, data, ComKey) {
         var store = this.getStore(name);
-        if(store) store.save(data);
-    },
-
-    handleGet: function(name, data, ComKey) {
-        var store = this.getStore(name);
-        if(store) store.get(data, ComKey);
-    },
-
-    handleDelete: function(name, data) {
-        var store = this.getStore(name);
-        if(store) store.delete(data);
+        if(store) store.handle(action, data, ComKey);
     },
 
     dispatcherIndex: Dispatcher.register(function(payload) {
         var store = payload.store;
-        var type = payload.type;
+        var action = payload.action;
         var ComKey = payload.ComKey;
         var data = payload.data;
-        switch(type) {
-            case Constants.storeHandle.SAVE:
-                StoreNotice.handleSave(store, data);
-                break;
-            case Constants.storeHandle.DELETE:
-                StoreNotice.handleDelete(store, data);
-                break;
-            case Constants.storeHandle.GET:
-                StoreNotice.handleGet(store, data, ComKey);
-                break;
-        }
+        StoreNotice.handle(store, action, data, ComKey);
     })
 
 };

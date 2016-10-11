@@ -16,12 +16,8 @@ var Actions = {
         this.dispatcher.notice(event, data);
     },
 
-    getData: function(comKey, store, data) {
-        this.dispatcher.storeGet(store, data, comKey);
-    },
-
-    storeHandle: function(store, handle, data) {
-        this.dispatcher["store"+handle](store, data);
+    storeHandle: function(store, action, data, comKey) {
+        this.dispatcher.storeHandle(store, action, data, comKey);
     },
 
     storeNotice: function(store, handle, listen, data) {

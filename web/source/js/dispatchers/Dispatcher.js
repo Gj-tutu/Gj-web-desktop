@@ -36,10 +36,10 @@ Dispatcher = assign({}, Dispatcher, {
         });
     },
 
-    dataHandle: function(store, type, data, ComKey) {
+    dataHandle: function(store, action, data, ComKey) {
         this.dispatch({
             store: store,
-            type: type,
+            action: action,
             ComKey: ComKey,
             data: data
         });
@@ -57,16 +57,8 @@ Dispatcher = assign({}, Dispatcher, {
         this.sendMessage(action, Constants.notice.NOTICE, data, null, null);
     },
 
-    storeSave: function(store, data) {
-        this.dataHandle(store, Constants.storeHandle.SAVE, data, null, null);
-    },
-
-    storeDelete: function(store, data) {
-        this.dataHandle(store, Constants.storeHandle.DELETE, data, null, null);
-    },
-
-    storeGet: function(store, data, comKey) {
-        this.dataHandle(store, Constants.storeHandle.GET, data, comKey);
+    storeHandle: function(store, action, data, comKey) {
+        this.dataHandle(store, action, data, comKey);
     }
 });
 
